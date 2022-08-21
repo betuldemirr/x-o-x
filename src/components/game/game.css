@@ -1,0 +1,121 @@
+.gameContainer {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameContainer .board {
+  width: 100vh;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+.gameContainer .board .cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.gameContainer .board .cell.x::before,
+.gameContainer .board .cell.x::after {
+  content: "";
+  position: absolute;
+  width: 13.5px;
+  height: 90px;
+  background-color: black;
+}
+.gameContainer .board .cell.x::before {
+  transform: rotate(45deg);
+}
+.gameContainer .board .cell.x::after {
+  transform: rotate(-45deg);
+}
+.gameContainer .board .cell.o::before,
+.gameContainer .board .cell.o::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.gameContainer .board .cell.o::before {
+  width: 90px;
+  height: 90px;
+  background-color: black;
+}
+.gameContainer .board .cell.o::after {
+  width: 63px;
+  height: 63px;
+  background-color: white;
+}
+.gameContainer .board .cell.x,
+.gameContainer .board .cell.o {
+  cursor: not-allowed;
+}
+.gameContainer .board.x .cell:not(.x):not(.o):hover::before,
+.gameContainer .board.x .cell:not(.x):not(.o):hover::after {
+  content: "";
+  position: absolute;
+  width: 13.5px;
+  height: 90px;
+  background-color: grey;
+}
+.gameContainer .board.x .cell:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+.gameContainer .board.x .cell:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+.gameContainer .board.o .cell:not(.x):not(.o):hover::before,
+.gameContainer .board.o .cell:not(.x):not(.o):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.gameContainer .board.o .cell:not(.x):not(.o):hover::before {
+  width: 90px;
+  height: 90px;
+  background-color: grey;
+}
+.gameContainer .board.o .cell:not(.x):not(.o):hover::after {
+  width: 63px;
+  height: 63px;
+  background-color: white;
+}
+.gameContainer .winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: rgb(38, 209, 41);
+  font-size: 5rem;
+  flex-direction: column;
+}
+.gameContainer .winning-message .button {
+  font-size: 35px;
+  margin-top: 30px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(38, 209, 41);
+  color: rgb(38, 209, 41);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.gameContainer .winning-message .button:hover {
+  background-color: rgb(38, 209, 41);
+  color: whitesmoke;
+  border-color: whitesmoke;
+}
+.gameContainer .winning-message.show {
+  display: flex;
+}
